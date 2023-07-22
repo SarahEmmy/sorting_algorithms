@@ -6,6 +6,13 @@
  *
  * @array: The array to be printed
  * @size: Number of elements in @array
+ * 
+ * Description:
+ *      This function prints the elements of an integer array
+ * in a space-separated format.
+ *      
+ * Return:
+ *      Void - The array is not modified.
  */
 void print_array(const int *array, size_t size)
 {
