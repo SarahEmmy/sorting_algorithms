@@ -5,6 +5,13 @@
  * print_list - Prints a list of integers
  *
  * @list: The list to be printed
+ * 
+ * Description:
+ *      This function prints the elements of a singly linked list of integers
+ *      in a space-separated format.
+ *      
+ * Return:
+ *      Void - The list is not modified.
  */
 void print_list(const listint_t *list)
 {
@@ -27,8 +34,13 @@ void print_list(const listint_t *list)
  *
  * @array: Array to convert to a doubly linked list
  * @size: Size of the array
- *
- * Return: Pointer to the first element of the created list. NULL on failure
+ * 
+ * Description:
+ *      This function creates a doubly linked list from an array of integers.
+ *      
+ * Return:
+ *      listint_t* - Pointer to the first element of the created list.
+ *                   NULL if memory allocation fails or if the array is empty.
  */
 listint_t *create_listint(const int *array, size_t size)
 {
