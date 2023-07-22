@@ -1,21 +1,29 @@
 #include "sort.h"
 
 /**
-* insertion_sort_list - sorts a doubly linked list of integers in
-* ascending order using the Insertion sort algorithm
-* @list: List to order
-* Return : Void - No return
-*/
+ * insertion_sort_list - Sorts a doubly linked list of integers in
+ * ascending order using the Insertion sort algorithm
+ * @list: List to be sorted
+ *
+ * Description:
+ *      This function implements the Insertion sort algorithm to sort a doubly
+ *      linked list of integers in ascending order.
+ *      
+ * Return:
+ *      Void - The sorted list is modified in place.
+ */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *aux2 = NULL, *aux_prev = NULL, *aux_next = NULL, *tmp = NULL;
 	int wall = 0;
 
 	if (!list || !*list)
+		/* If the list is empty or contains only one element, it is already sorted */
 		return;
 
 	tmp = *list;
-
+	
+	/* Compare and swap until the right position is found */
 	while (tmp)
 	{
 		if (tmp->prev != NULL)
@@ -36,7 +44,8 @@ void insertion_sort_list(listint_t **list)
 				}
 				if (aux_next)
 					aux_next->prev = aux_prev;
-
+				
+				/* Update the previous node for the next iteration */
 				aux2->prev = aux_prev->prev;
 				aux2->next = aux_prev;
 				aux_prev->prev = aux2;
@@ -46,6 +55,7 @@ void insertion_sort_list(listint_t **list)
 					break;
 			}
 		}
+		/* Move to the next unsorted node */
 		tmp = tmp->next;
 	}
 }
