@@ -10,6 +10,9 @@
  * @n: Integer stored in the node
  * @prev: Pointer to the previous element of the list
  * @next: Pointer to the next element of the list
+ * 
+ * Description:
+ *      This struct defines a node for a doubly linked list of integers.
  */
 typedef struct listint_s
 {
