@@ -5,12 +5,12 @@
  * @lower: Lowest index in the array
  * @higher: Highest index in the array
  * @size: Size of the array
- * 
+ *
  * Description:
  *      This function is a helper function used in the Quick Sort algorithm.
  *      It rearranges the elements in the array based on a pivot value and
  *      returns the index of the pivot after partitioning.
- *      
+ *
  * Return:
  *      int - The index of the pivot after partitioning.
  */
@@ -49,12 +49,13 @@ int partition(int *array, int lower, int higher, int size)
  * @size: Size of the array
  * @low: Lowest index in the array
  * @high: Highest index in the array
- * 
+ *
  * Description:
  *      This function is a helper function used in the Quick Sort algorithm.
  *      It sets the pivot using recursion by dividing the array into sub-arrays
- *      and selecting a new pivot for each sub-array until the entire array is sorted.
- *      
+ *      and selecting a new pivot for each sub-array until
+ *      the entire array is sorted.
+ *
  * Return:
  *      Void - The array is modified in place.
  */

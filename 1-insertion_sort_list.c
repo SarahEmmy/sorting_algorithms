@@ -8,54 +8,44 @@
  * Description:
  *      This function implements the Insertion sort algorithm to sort a doubly
  *      linked list of integers in ascending order.
- *      
+ *
  * Return:
  *      Void - The sorted list is modified in place.
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *aux2 = NULL, *aux_prev = NULL, *aux_next = NULL, *tmp = NULL;
-	int wall = 0;
+	listint_t *current, *prev_node, *next_node, *tmp;
 
-	if (!list || !*list)
-		/* If the list is empty or contains only one element, it is already sorted */
+	if (!list || !*list || (*list)->next == NULL)
 		return;
 
-	tmp = *list;
-	
-	/* Compare and swap until the right position is found */
-	while (tmp)
+	current = (*list)->next;
+	while (current)
 	{
-		if (tmp->prev != NULL)
-		{
-			aux2 = tmp;
-			wall = 0;
-			while (aux2 && aux2->prev->n > aux2->n)
-			{
-				aux_prev = aux2->prev;
-				aux_next = aux2->next;
+		prev_node = current->prev;
+		next_node = current->next;
+		tmp = current;
 
-				if (aux_prev->prev)
-					aux_prev->prev->next = aux2;
-				else
-				{
-					*list = aux2;
-					wall = 1;
-				}
-				if (aux_next)
-					aux_next->prev = aux_prev;
-				
-				/* Update the previous node for the next iteration */
-				aux2->prev = aux_prev->prev;
-				aux2->next = aux_prev;
-				aux_prev->prev = aux2;
-				aux_prev->next = aux_next;
-				print_list(*list);
-				if (wall)
-					break;
-			}
+		while (prev_node && prev_node->n > tmp->n)
+		{
+			prev_node->next = tmp->next;
+			if (tmp->next)
+				tmp->next->prev = prev_node;
+
+			tmp->next = prev_node;
+			tmp->prev = prev_node->prev;
+
+			if (prev_node->prev)
+				prev_node->prev->next = tmp;
+			else
+				*list = tmp;
+
+			prev_node->prev = tmp;
+			prev_node = tmp->prev;
+
+			print_list(*list);
 		}
-		/* Move to the next unsorted node */
-		tmp = tmp->next;
+
+		current = next_node;
 	}
 }

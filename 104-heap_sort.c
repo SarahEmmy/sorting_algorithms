@@ -6,12 +6,12 @@
  * @array: Array of integers
  * @index: Index of the array
  * @size: Size of the array
- * 
+ *
  * Description:
  *      This function is a helper function used in the Heap Sort algorithm.
  *      It rearranges the elements in the array to maintain the heap property
  *      after the root element has been modified.
- *      
+ *
  * Return:
  *      Void - The array is modified in place.
  */

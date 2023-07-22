@@ -4,11 +4,11 @@
  * shell_sort - Sorts an array of integers in ascending order
  * @array: Array of integers
  * @size: Size of the array
- * 
+ *
  * Description:
  *      This function implements the Shell sort algorithm to sort an array
  *      of integers in ascending order.
- *      
+ *
  * Return:
  *      Void - The sorted array is modified in place.
  */
@@ -29,7 +29,7 @@ void shell_sort(int *array, size_t size)
 
 	while (space > 0)
 	{
-		* Perform insertion sort with the current gap */
+		/* Perform insertion sort with the current gap */
 		for (i = space; i < size; i++)
 		{
 			tmp = array[i];
