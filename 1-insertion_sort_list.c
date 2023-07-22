@@ -1,51 +1,51 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - Sorts a doubly linked list of integers in
- * ascending order using the Insertion sort algorithm
- * @list: List to be sorted
- *
- * Description:
- *      This function implements the Insertion sort algorithm to sort a doubly
- *      linked list of integers in ascending order.
- *
- * Return:
- *      Void - The sorted list is modified in place.
- */
+* insertion_sort_list - sorts a doubly linked list of integers in
+* ascending order using the Insertion sort algorithm
+* @list: List to order
+* Return : Void - No return
+*/
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current, *prev_node, *next_node, *tmp;
+	listint_t *aux2 = NULL, *aux_prev = NULL, *aux_next = NULL, *tmp = NULL;
+	int wall = 0;
 
-	if (!list || !*list || (*list)->next == NULL)
+	if (!list || !*list)
 		return;
 
-	current = (*list)->next;
-	while (current)
+	tmp = *list;
+
+	while (tmp)
 	{
-		prev_node = current->prev;
-		next_node = current->next;
-		tmp = current;
-
-		while (prev_node && prev_node->n > tmp->n)
+		if (tmp->prev != NULL)
 		{
-			prev_node->next = tmp->next;
-			if (tmp->next)
-				tmp->next->prev = prev_node;
+			aux2 = tmp;
+			wall = 0;
+			while (aux2 && aux2->prev->n > aux2->n)
+			{
+				aux_prev = aux2->prev;
+				aux_next = aux2->next;
 
-			tmp->next = prev_node;
-			tmp->prev = prev_node->prev;
+				if (aux_prev->prev)
+					aux_prev->prev->next = aux2;
+				else
+				{
+					*list = aux2;
+					wall = 1;
+				}
+				if (aux_next)
+					aux_next->prev = aux_prev;
 
-			if (prev_node->prev)
-				prev_node->prev->next = tmp;
-			else
-				*list = tmp;
-
-			prev_node->prev = tmp;
-			prev_node = tmp->prev;
-
-			print_list(*list);
+				aux2->prev = aux_prev->prev;
+				aux2->next = aux_prev;
+				aux_prev->prev = aux2;
+				aux_prev->next = aux_next;
+				print_list(*list);
+				if (wall)
+					break;
+			}
 		}
-
-		current = next_node;
+		tmp = tmp->next;
 	}
 }
