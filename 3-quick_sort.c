@@ -1,11 +1,18 @@
 #include "sort.h"
 /**
- * partition - lamuto partition scheme
+ * partition - Lomuto partition scheme for quicksort.
  * @array: Array of integers
- * @lower: lowest number in the array
- * @higher: Highest number in the array
+ * @lower: Lowest index in the array
+ * @higher: Highest index in the array
  * @size: Size of the array
- * Return: index
+ * 
+ * Description:
+ *      This function is a helper function used in the Quick Sort algorithm.
+ *      It rearranges the elements in the array based on a pivot value and
+ *      returns the index of the pivot after partitioning.
+ *      
+ * Return:
+ *      int - The index of the pivot after partitioning.
  */
 int partition(int *array, int lower, int higher, int size)
 {
@@ -37,12 +44,19 @@ int partition(int *array, int lower, int higher, int size)
 	return (index);
 }
 /**
- * set_pivot- Function for setting the pivot using recursion
+ * set_pivot - Function for setting the pivot using recursion
  * @array: Array of integers
  * @size: Size of the array
- * @low: lowest number in the array
- * @high: highest number in the array
- * Return: Void - No return
+ * @low: Lowest index in the array
+ * @high: Highest index in the array
+ * 
+ * Description:
+ *      This function is a helper function used in the Quick Sort algorithm.
+ *      It sets the pivot using recursion by dividing the array into sub-arrays
+ *      and selecting a new pivot for each sub-array until the entire array is sorted.
+ *      
+ * Return:
+ *      Void - The array is modified in place.
  */
 void set_pivot(int *array, int low, int high, int size)
 {
@@ -50,8 +64,10 @@ void set_pivot(int *array, int low, int high, int size)
 
 	if (low < high)
 	{
+		/* Partition the array and get the pivot index */
 		pi = partition(array, low, high, size);
 
+		/* Recursively sort the left and right sub-arrays */
 		set_pivot(array, low, pi - 1, size);
 		set_pivot(array, pi + 1, high, size);
 	}
