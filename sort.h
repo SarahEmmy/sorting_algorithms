@@ -9,17 +9,6 @@
 #define DOWN 1
 
 /**
- * enum bool - Enumeration of Boolean values.
- * @false: Equals 0.
- * @true: Equals 1.
- */
-typedef enum bool
-{
-	false = 0,
-	true
-} bool;
-
-/**
  * struct listint_s - Doubly linked list node
  *
  * @n: Integer stored in the node
@@ -28,27 +17,34 @@ typedef enum bool
  */
 typedef struct listint_s
 {
-	const int n;
-	struct listint_s *prev;
-	struct listint_s *next;
+    const int n;
+    struct listint_s *prev;
+    struct listint_s *next;
 } listint_t;
+
+/* Boolean type enumeration */
+typedef enum bool
+{
+    false = 0,
+    true
+} bool;
 
 /* Printing helper functions */
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 
-/* Sorting algoritms */
-void bubble_sort(int *array, size_t size);
-void insertion_sort_list(listint_t **list);
-void selection_sort(int *array, size_t size);
-void quick_sort(int *array, size_t size);
-void shell_sort(int *array, size_t size);
-void cocktail_sort_list(listint_t **list);
-void counting_sort(int *array, size_t size);
-void merge_sort(int *array, size_t size);
-void heap_sort(int *array, size_t size);
-void radix_sort(int *array, size_t size);
-void bitonic_sort(int *array, size_t size);
-void quick_sort_hoare(int *array, size_t size);
+/* Sorting algorithms */
+void bubble_sort(int *array, size_t size);            // Bubble Sort
+void insertion_sort_list(listint_t **list);          // Insertion Sort (Doubly Linked List)
+void selection_sort(int *array, size_t size);        // Selection Sort
+void quick_sort(int *array, size_t size);            // Quick Sort (Lomuto Partition Scheme)
+void shell_sort(int *array, size_t size);            // Shell Sort
+void cocktail_sort_list(listint_t **list);          // Cocktail Shaker Sort (Doubly Linked List)
+void counting_sort(int *array, size_t size);         // Counting Sort
+void merge_sort(int *array, size_t size);            // Merge Sort
+void heap_sort(int *array, size_t size);             // Heap Sort
+void radix_sort(int *array, size_t size);            // Radix Sort
+void bitonic_sort(int *array, size_t size);          // Bitonic Sort
+void quick_sort_hoare(int *array, size_t size);      // Quick Sort (Hoare Partition Scheme)
 
 #endif /* SORT_H */
