@@ -6,7 +6,14 @@
  * @array: Array of integers
  * @index: Index of the array
  * @size: Size of the array
- * Return: Void - No return
+ * 
+ * Description:
+ *      This function is a helper function used in the Heap Sort algorithm.
+ *      It rearranges the elements in the array to maintain the heap property
+ *      after the root element has been modified.
+ *      
+ * Return:
+ *      Void - The array is modified in place.
  */
 void heapify(int *array, int index, size_t size)
 {
@@ -14,16 +21,19 @@ void heapify(int *array, int index, size_t size)
 	size_t child_l = 2 * index + 1;
 	size_t child_r = 2 * index + 2;
 
+	/* Check if left child is larger than root */
 	if (child_l < size && array[child_l] > array[larg])
 	{
 		larg = child_l;
 	}
 
+	/* Check if right child is larger than root */
 	if (child_r < size && array[child_r] > array[larg])
 	{
 		larg = child_r;
 	}
 
+	/* If the largest element is not the root, swap them */
 	if (larg != index)
 	{
 		swap(&array[index], &array[larg]);
